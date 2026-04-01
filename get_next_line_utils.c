@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monika <monika@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mavanesy <mavanesy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 16:15:11 by mavanesy          #+#    #+#             */
-/*   Updated: 2026/04/01 16:06:39 by monika           ###   ########.fr       */
+/*   Updated: 2026/04/01 19:16:52 by mavanesy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *c)
+int	ft_strlen(const char *c)
 {
 	int	n;
 
@@ -31,6 +31,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		len;
 	int		len1;
 
+	if (!s1)
+		return (ft_strdup(s2, ft_strlen(s2)));
 	len = ft_strlen(s1) + ft_strlen(s2);
 	len1 = ft_strlen(s1);
 	new = malloc(len + 1);
@@ -54,6 +56,8 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] == (unsigned char)c)
@@ -65,10 +69,10 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strdup(const char *s,int len)
+char	*ft_strdup(const char *s, int len)
 {
 	char	*c;
-	size_t	i;
+	int		i;
 
 	c = malloc (len + 1);
 	if (!c)
